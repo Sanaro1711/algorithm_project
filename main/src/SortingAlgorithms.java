@@ -17,9 +17,6 @@ public class SortingAlgorithms {
         //SyncEnergyMonitor m = new SyncEnergyMonitor();
         //m.activate();
 
-        // collects a sample of the energy usage before the work is done
-        //EnergyStats before = m.getSample();
-
         // opens the csv file in the folder
         Scanner file;
         // contains the path of the CSV file to be opened
@@ -33,6 +30,9 @@ public class SortingAlgorithms {
             int readNumber = file.nextInt();
             input[i] = readNumber;
         }
+
+        // collects a sample of the energy usage before the work is done
+        //EnergyStats before = m.getSample();
 
         // uses merge sort on the final array of "size" numbers (e.g. 500 numbers)
         sa.merge_sort(input, 0, input.length - 1);
