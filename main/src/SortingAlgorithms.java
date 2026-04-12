@@ -2,17 +2,41 @@ import jRAPL.EnergyDiff;
 import jRAPL.EnergyStats;
 import jRAPL.SyncEnergyMonitor;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
 public class SortingAlgorithms {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         SortingAlgorithms sa = new SortingAlgorithms();
 
         // makes an object that tracks the energy usage
-        SyncEnergyMonitor m = new SyncEnergyMonitor();
-        m.activate();
+        //SyncEnergyMonitor m = new SyncEnergyMonitor();
+        //m.activate();
 
         // collects a sample of the energy usage before the work is done
-        EnergyStats before = m.getSample();
+        //EnergyStats before = m.getSample();
+
+        // opens the csv file in the folder
+        Scanner file;
+        file = new Scanner(new File("D:\\ucd\\comp20290\\project_true_folder\\main\\src\\Random Numbers 3 (Max and Min for Java, 500k) - Sheet1.csv"));
+        // reads the first "size" numbers
+        int size = 5000;
+        int[] input = new int[size];
+
+        for(int i = 0; i < size; i++) {
+            int readNumber = file.nextInt();
+            input[i] = readNumber;
+        }
+
+        // uses merge sort on the final array of "size" numbers (e.g. 500 numbers)
+        sa.merge_sort(input, 0, input.length - 1);
+
+        System.out.println(String.format("Merge Sort result: \n[ %d, %d, %d, ..., %d, ... %d, %d, %d ]", input[0], input[1], input[2], input[size / 2], input[size - 3], input[size - 2], input[size - 1]));
+
 
         int[] original = {5, 2, 9, 1, 5, 6};
 
@@ -40,13 +64,13 @@ public class SortingAlgorithms {
         printArray(sortedCounting);
 
         // grabs a sample after the work is done
-        EnergyStats after = m.getSample();
+        //EnergyStats after = m.getSample();
 
         // calculates the difference between the two, and stops the tracker
-        EnergyDiff difference = EnergyDiff.between(before, after);
-        m.deactivate();
+        //EnergyDiff difference = EnergyDiff.between(before, after);
+        //m.deactivate();
 
-        System.out.println("Energy used: " + difference.csv());
+        // System.out.println("Energy used: " + difference.csv());
 
 
         // NOTE: BEST CASE OF BUBBLE SORT IS O(n) but report says n^2
