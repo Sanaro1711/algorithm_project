@@ -22,7 +22,9 @@ public class SortingAlgorithms {
 
         // opens the csv file in the folder
         Scanner file;
-        file = new Scanner(new File("D:\\ucd\\comp20290\\project_true_folder\\main\\src\\Random Numbers 3 (Max and Min for Java, 500k) - Sheet1.csv"));
+        // contains the path of the CSV file to be opened
+        String path = "/root/IdeaProjects/algorithm_project1/main/src/Random Numbers 3 (Max and Min for Java, 500k) - Sheet1.csv";
+        file = new Scanner(new File(path));
         // reads the first "size" numbers
         int size = 5000;
         int[] input = new int[size];
@@ -72,6 +74,11 @@ public class SortingAlgorithms {
 
         // System.out.println("Energy used: " + difference.csv());
 
+        // prints out the jRAPL readings
+        // System.out.println(String.format(
+        //  "Used %.2f J for CPU, %.2f J for DRAM, %.2f J in total over %d milliseconds",
+        //  difference.getCore(), difference.getDram(), difference.getPackage(), difference.getTimeElapsed().getNano() / 1000000
+        // ));
 
         // NOTE: BEST CASE OF BUBBLE SORT IS O(n) but report says n^2
         // ---------- Complexity Table ----------
